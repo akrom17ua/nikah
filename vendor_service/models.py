@@ -8,6 +8,7 @@ class Vendor(models.Model):
     business_name = models.CharField(max_length=255)
     description = models.TextField()
     address = models.CharField(max_length=255)
+    location = models.CharField(max_length=255, null = True, blank = True)
     phone_number = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
     website = models.URLField(blank=True)

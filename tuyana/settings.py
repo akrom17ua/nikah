@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     'catalog_service',
     'explore_service',
     'interaction_service',
+    'notification_service',
     'review_service',
     'corsheaders',
     'accounts',
+    'drf_yasg',
 ]
 
 # DATABASES = {

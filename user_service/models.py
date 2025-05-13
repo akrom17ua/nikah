@@ -13,4 +13,4 @@ class UserProfile(models.Model):
     # guest_count = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.user.get_full_name()}'s Profile"
+        return self.user.name

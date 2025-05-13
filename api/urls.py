@@ -3,7 +3,7 @@ from api import views
 
 
 urlpatterns = [
-    path('api/check/', views.check, name='check'),
+    path('check/', views.check, name='check'),
     # path('auth/', include('auth_service.urls')),
     path('vendor/', include('vendor_service.urls')),
     path('user/', include('user_service.urls')),

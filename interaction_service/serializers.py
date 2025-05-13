@@ -5,4 +5,4 @@ from .models import Interaction
 class InteractionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interaction
-        fields = ['id', 'user', 'vendor', 'product', 'action', 'created_at']
+        fields = ['id', 'vendor', 'service', 'action', 'created_at']
