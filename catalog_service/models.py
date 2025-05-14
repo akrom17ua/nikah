@@ -9,8 +9,8 @@ class ServiceCategory(models.Model):
         return self.name
 
 class Service(models.Model):
-    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name='services')
-    category = models.ForeignKey(ServiceCategory, on_delete=models.SET_NULL, null=True, related_name='services')
+    vendor = models.ForeignKey('vendor_service.Vendor', on_delete=models.CASCADE, related_name='services')
+    category = models.ForeignKey('catalog_service.ServiceCategory', on_delete=models.SET_NULL, null=True, related_name='catalog_services')  # Updated related_name
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -19,7 +19,6 @@ class Service(models.Model):
 
     def __str__(self):
         return f"{self.name} by {self.vendor.business_name}"
-    
 
 
-    
+

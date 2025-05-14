@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Vendor, VendorImage, Category
+from .models import Vendor, VendorImage
 
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at')
-    search_fields = ('name',)
+@admin.register(Vendor)
+class VendorAdmin(admin.ModelAdmin):
+    list_display = ('business_name', 'phone_number', 'created_at')
+    search_fields = ('business_name',)
 
 @admin.register(VendorImage)
 class VendorImageAdmin(admin.ModelAdmin):
