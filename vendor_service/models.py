@@ -18,7 +18,7 @@ class Vendor(models.Model):
     
 class VendorImage(models.Model):
     vendor = models.ForeignKey(Vendor, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='vendor_images/')
+    image = models.ImageField(upload_to='images/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     categories = models.ManyToManyField('catalog_service.ServiceCategory', related_name='images', blank=True) 
     

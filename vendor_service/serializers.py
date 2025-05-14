@@ -1,11 +1,13 @@
 from rest_framework import serializers
 from .models import Vendor, VendorImage
 
+
+
 class VendorImageSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(required=False)
     class Meta:
         model = VendorImage
-        fields = ['id', 'image', 'uploaded_at']
-
+        fields = '__all__'
 
 class VendorSerializer(serializers.ModelSerializer):
     
@@ -18,7 +20,8 @@ class VendorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vendor
         fields = ['id', 'business_name', 'description', 'address', 'phone_number', 'email', 'images', 'created_at', 'uploaded_images']
-        
+    
+       
     def create(self, validated_data):
         uploaded_images = validated_data.pop('uploaded_images', [])
         vendor = Vendor.objects.create(**validated_data)

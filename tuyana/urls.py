@@ -45,7 +45,7 @@ urlpatterns = [
     path('interaction_service/', include("interaction_service.urls")),
     path('explore_service/', include('explore_service.urls')),
     path('review_service/', include("review_service.urls")),
-    path('user_service/', include("user_service.urls")),
+    # path('user_service/', include("user_service.urls")),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

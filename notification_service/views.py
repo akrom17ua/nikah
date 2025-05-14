@@ -5,6 +5,6 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class MesssageViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     queryset = Message.objects.all()
     serializer_class = MessageSerializer

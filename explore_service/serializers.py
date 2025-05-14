@@ -3,7 +3,9 @@ from .models import ExploreItem
 
 
 
+
 class ExploreItemSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(required=False)
     class Meta:
         model = ExploreItem
-        fields = ['id', 'name', 'description', 'category', 'image', 'created_at', 'views', 'likes']
+        fields = '__all__'
