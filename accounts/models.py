@@ -1,6 +1,8 @@
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
+import random
+from django.utils import timezone
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, phone_number, password=None, **extra_fields):
@@ -40,3 +42,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.name
+
+
+class OTP(models.Model):
+    phone_number = models.CharField(max_length=15)
+    code = models.CharField(max_length=5)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_used = models.BooleanField(default=False)
+
+    def is_valid(self):
+        return not self.is_used and (timezone.now() - self.created_at).seconds < 300  # 5 minutes

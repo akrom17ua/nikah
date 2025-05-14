@@ -37,11 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #
+    # my apps
     'rest_framework',
-    # 'rest_framework_simplejwt',
-    'api',
-  
+    'rest_framework_simplejwt',
+    'api',  
     'vendor_service',
     'user_service',
     'catalog_service',
@@ -53,6 +52,17 @@ INSTALLED_APPS = [
     'accounts',
     'drf_yasg',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
+
+
+
 
 # DATABASES = {
 #     'default': {
