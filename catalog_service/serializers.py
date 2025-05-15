@@ -6,4 +6,4 @@ class ServiceSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)
     class Meta:
         model = Service
-        fields = ['id', 'name', 'description', 'category', 'price', 'image']
+        fields = ['id', 'vendor', 'name', 'description', 'category', 'price', 'image']
