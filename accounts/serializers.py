@@ -15,10 +15,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 
 class SendOTPSerializer(serializers.Serializer):
-    phone = serializers.CharField(min_length=1, max_length=15)
+    phone_number = serializers.CharField(min_length=1, max_length=15)
 
 class VerifyOTPSerializer(serializers.Serializer):
-    phone = serializers.CharField(min_length=1, max_length=15)
+    phone_number = serializers.CharField(min_length=1, max_length=15)
     otp   = serializers.CharField(min_length=1, max_length=6)
 
 class SignUpSerializer(serializers.ModelSerializer):
@@ -42,14 +42,14 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
 
         # 2) append your user info
-        data['user'] = {
-            'id':       self.user.id,
-            'name':     self.user.name,
-            'phone':    self.user.phone_number,
-            # if you later add avatar URL:
-            # 'avatar': getattr(self.user, 'avatar', None) and self.user.avatar.url,
-        }
-        return data
+        # data['user'] = {
+        #     'id':       self.user.id,
+        #     'name':     self.user.name,
+        #     'phone':    self.user.phone_number,
+        #     # if you later add avatar URL:
+        #     # 'avatar': getattr(self.user, 'avatar', None) and self.user.avatar.url,
+        # }
+        # return data
     
 class WhoAmISerializer(serializers.Serializer):
     id           = serializers.UUIDField(read_only=True)

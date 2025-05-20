@@ -33,9 +33,9 @@ class SendOTPView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        phone = serializer.validated_data['phone_number']
+        phone_number = serializer.validated_data['phone_number']
         # TODO: integrate real SMS; for now:
-        print(f"[DEBUG] Sending static OTP {STATIC_OTP} to {phone}")
+        print(f"[DEBUG] Sending static OTP {STATIC_OTP} to {phone_number}")
 
         return Response({'detail': 'OTP sent.'}, status=status.HTTP_200_OK)
 
@@ -50,7 +50,7 @@ class VerifyOTPView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        phone = serializer.validated_data['phone_number']
+        phone_number = serializer.validated_data['phone_number']
         otp   = serializer.validated_data['otp']
 
         if otp != STATIC_OTP:
@@ -59,8 +59,8 @@ class VerifyOTPView(GenericAPIView):
 
         # get or create user
         user, _ = User.objects.get_or_create(
-            phone_number=phone,
-            defaults={'name': phone}
+            phone_number=phone_number,
+            defaults={'name': phone_number}
         )
 
         refresh = RefreshToken.for_user(user)
