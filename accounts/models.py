@@ -24,7 +24,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         regex=r'^\+?1?\d{9,15}$',
         message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
     )])
-    name = models.CharField(max_length=100) 
+    name = models.CharField(max_length=30, blank=True)
+    
+
+    # optional avatar upload
+    avatar = models.ImageField(
+        upload_to='images/',
+        blank=True, null=True
+    )
     is_active = models.BooleanField(default=True)  
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -38,15 +45,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'phone_number'
-    REQUIRED_FIELDS = ['name']
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.name
 
 
 class OTP(models.Model):
-    phone_number = models.CharField(max_length=15)
-    code = models.CharField(max_length=5)
+    phone_number = models.CharField(max_length=15, db_index = True)
+    code = models.CharField(max_length=6)
     created_at = models.DateTimeField(auto_now_add=True)
     is_used = models.BooleanField(default=False)
 

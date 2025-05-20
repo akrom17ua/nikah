@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # my apps
     'rest_framework',
-    'rest_framework_simplejwt',
+    # 'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'api',  
     'vendor_service',
     'user_service',
@@ -59,21 +60,22 @@ REST_FRAMEWORK = {
     ),
 }
 
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
 
 
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'nikohs', 
-#         'USER': 'postgres', 
-#         'PASSWORD': 'biontech_17$', 
-#         'HOST': 'localhost',  
-#         'PORT': '5432', 
-#     }
-# }
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
