@@ -69,6 +69,21 @@ SIMPLE_JWT = {
 }
 
 
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': True,  
+    'SECURITY_DEFINITIONS': {
+        'Basic': {  
+            'type': 'basic'
+        },
+        'Bearer': {  
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': "JWT Authorization header using the Bearer scheme. Example: 'Bearer your_token_here'",
+        },
+    },
+}
+
 
 
 
@@ -164,3 +179,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+
