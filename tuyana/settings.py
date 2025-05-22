@@ -79,7 +79,7 @@ SWAGGER_SETTINGS = {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header',
-            'description': "JWT Authorization header using the Bearer scheme. Example: 'Bearer your_token_here'",
+            'description': "JWT Authorization header using the Bearer scheme.",
         },
     },
 }
