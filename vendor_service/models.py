@@ -23,4 +23,4 @@ class VendorImage(models.Model):
     categories = models.ManyToManyField('catalog_service.ServiceCategory', related_name='images', blank=True) 
     
     def __str__(self):
-        return f"{self.vendor.name} - Image {self.id}"
+        return f"{self.vendor.business_name} - Image {self.id}"
