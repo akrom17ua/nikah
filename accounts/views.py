@@ -67,6 +67,8 @@ class VerifyOTPView(GenericAPIView):
         return Response({
             'refresh': str(refresh),
             'access':  str(refresh.access_token),
+            'registered': created,
+            'message': "User registered." if created else "User already exists"
         }, status=status.HTTP_200_OK)
 
 
