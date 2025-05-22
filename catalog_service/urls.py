@@ -1,12 +1,17 @@
 from rest_framework.routers import DefaultRouter
-from catalog_service.views import ServiceViewSet
+from catalog_service.views import ServiceViewSet, ServiceCategoryViewSet
 from django.urls import path, include
 
 
 
+service_router = DefaultRouter()
+service_router.register(r'services', ServiceViewSet, basename='service')
+
+
 catalog_router = DefaultRouter()
-catalog_router.register(r'services', ServiceViewSet, basename='service')
+catalog_router.register(r"categories", ServiceCategoryViewSet, basename="categories")
 
 urlpatterns = [
-    path('', include(catalog_router.urls)),  
+    path('', include(service_router.urls)),  
+    path('', include(catalog_router.urls)),
 ]

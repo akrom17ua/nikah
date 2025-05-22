@@ -41,15 +41,15 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         # 1) run the base class validation (checks username/password)
         data = super().validate(attrs)
 
-        # 2) append your user info
-        # data['user'] = {
-        #     'id':       self.user.id,
-        #     'name':     self.user.name,
-        #     'phone':    self.user.phone_number,
-        #     # if you later add avatar URL:
-        #     # 'avatar': getattr(self.user, 'avatar', None) and self.user.avatar.url,
-        # }
-        # return data
+        
+        data['user'] = {
+            'id':       self.user.id,
+            'name':     self.user.name,
+            'phone':    self.user.phone_number,
+            # if you later add avatar URL:
+            # 'avatar': getattr(self.user, 'avatar', None) and self.user.avatar.url,
+        }
+        return data
     
 class WhoAmISerializer(serializers.Serializer):
     id           = serializers.UUIDField(read_only=True)
