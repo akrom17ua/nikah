@@ -7,7 +7,7 @@ class ServiceCategory(models.Model):
     image = models.ImageField(upload_to="images/", null=True, blank=True)
 
     def __str__(self):
-        return self.name and self.image
+        return self.name
 
 class Service(models.Model):
     vendor = models.ForeignKey('vendor_service.Vendor', on_delete=models.CASCADE, related_name='services')

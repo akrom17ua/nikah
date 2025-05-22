@@ -58,7 +58,7 @@ class VerifyOTPView(GenericAPIView):
                             status=status.HTTP_400_BAD_REQUEST)
 
         # get or create user
-        user, _ = User.objects.get_or_create(
+        user, created  = User.objects.get_or_create(
             phone_number=phone_number,
             defaults={'name': phone_number}
         )
