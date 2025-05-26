@@ -18,4 +18,5 @@ urlpatterns = [
     path('sellers/near-you/', SellersNearYouView.as_view(), name="sellers-near-you"),
     path('saved-service/', SavedserviceListCreateView.as_view(), name="savedservice-list-create"),
     path('saved-services/<int:pk>/', SavedServiceDeleteView.as_view(), name="savedservice-delete"),
+    
 ]

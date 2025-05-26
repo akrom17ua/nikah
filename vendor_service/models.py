@@ -24,3 +24,4 @@ class VendorImage(models.Model):
     
     def __str__(self):
         return f"{self.vendor.business_name} - Image {self.image}"
+    

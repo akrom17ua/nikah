@@ -59,3 +59,4 @@ class SellersNearYouView(APIView):
         serializer = ServiceSerializer(sellers, many = True)
         return Response(serializer.data)
     
+ 

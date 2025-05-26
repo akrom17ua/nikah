@@ -1,4 +1,4 @@
-
+from .views import VendorListByCategoryView
 from django.urls import path, include
 
 
@@ -17,4 +17,5 @@ vendor_image_router.register(r'vendor-images', VendorImageViewSet, basename="ven
 urlpatterns = [
     path('', include(vendor_router.urls)), 
     path('', include(vendor_image_router.urls)),
+    path('vendors-by-category/', VendorListByCategoryView.as_view(), name='vendors-by-category'),
 ]

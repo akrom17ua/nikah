@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     wedding_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
-    # guest_count = models.PositiveIntegerField(null=True, blank=True)
+    
 
     def __str__(self):
         return self.user.name
