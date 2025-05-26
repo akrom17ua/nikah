@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Service, ServiceCategory
+from .models import Service, ServiceCategory, SavedService
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -13,4 +13,10 @@ class ServiceSerializer(serializers.ModelSerializer):
 class ServiceCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceCategory
+        fields = "__all__"
+        
+        
+class SavedServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SavedService
         fields = "__all__"

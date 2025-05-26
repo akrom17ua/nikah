@@ -1,9 +1,10 @@
 from rest_framework import viewsets
-from .serializers import ServiceSerializer, ServiceCategorySerializer
-from .models import Service, ServiceCategory
+from .serializers import ServiceSerializer, ServiceCategorySerializer, SavedServiceSerializer
+from .models import Service, ServiceCategory, SavedService
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import generics, permissions
 
 
 class ServiceViewSet(viewsets.ModelViewSet):
@@ -17,6 +18,25 @@ class ServiceCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = ServiceCategorySerializer
     parser_classes = [MultiPartParser, FormParser]
     
+class SavedserviceListCreateView(generics.ListCreateAPIView):
+    serializer_class = SavedServiceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+        return SavedService.objects.filter(user=self.request.user)
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+        
+
+class SavedServiceDeleteView(generics.DestroyAPIView):
+    serializer_class = SavedServiceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = "pk"
+    
+    def get_queryset(self):
+        return SavedService.objects.filter(user = self.request.user)
+ 
 
 class VenuesNearYouView(APIView):
     def get(self, request):
@@ -38,3 +58,4 @@ class SellersNearYouView(APIView):
         sellers = Service.objects.filter(location__iexact = region, category__name__iexact = service_type )
         serializer = ServiceSerializer(sellers, many = True)
         return Response(serializer.data)
+    
