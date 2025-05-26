@@ -53,12 +53,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'drf_yasg',
+    
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+   
 }
 
 from datetime import timedelta
@@ -84,14 +86,6 @@ SWAGGER_SETTINGS = {
         },
     },
 }
-
-
-
-
-
-
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
